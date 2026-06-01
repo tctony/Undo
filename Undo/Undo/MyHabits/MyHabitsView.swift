@@ -27,18 +27,18 @@ struct MyHabitsView: View {
                 HeaderSectionView(habits: habits)
                 HabitsSectionView(habits: habits, path: $path)
             }
-            //.navigationTitle(String(localized: "My Habits"))
-            //.navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItemGroup(placement: .primaryAction) {
-//                    Button(String(localized: "Add Habit"), systemImage: "plus") {
-//                        let habit = Habit()
-//                        path = [habit]
-//                        addHabitTip.invalidate(reason: .actionPerformed) // Stop showing the tip again.
-//                    }
-//                    .popoverTip(!isFirstTimeUserExperience ? addHabitTip : nil, arrowEdge: .top)
-//                }
-//            }
+            .navigationTitle(String(localized: "My Habits"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItemGroup(placement: .primaryAction) {
+                    Button(String(localized: "Add Habit"), systemImage: "plus") {
+                        let habit = Habit()
+                        path = [habit]
+                        addHabitTip.invalidate(reason: .actionPerformed)
+                    }
+                    .popoverTip(!isFirstTimeUserExperience ? addHabitTip : nil, arrowEdge: .top)
+                }
+            }
             .navigationDestination(for: Habit.self) { habit in
                 EditHabitView(habit: habit)
             }
